@@ -1,0 +1,18 @@
+.list-group {
+    margin: 0px;
+}
+.list-group-item {
+    padding: 5px;
+    color: black;
+    border-radius: 0px;      
+}
+.list-group-item.pending {
+    background-color: white;
+}
+.list-group-item.completed {
+    background-color: lightgrey;
+}
+.panel-body {
+    height: 70vh;
+    overflow-y: auto;
+}

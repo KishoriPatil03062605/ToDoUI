@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+.navbar-inverse {
+    border-radius: 0px;
+}
+
+body {
+    background-color: #efefef;
+}
+
+.btn.btn-secondary {
+    background-color: #00abec;
+    color: white;
+    border-radius: 0px;        
+}
+
+.panel-info>.panel-heading {
+    color: #31708f;
+    background-color: #00abec;
+    border-color: transparent;
+}
+
+.form-control {
+    border-radius: 0px;
+}
+
+.glyphicon {
+    color: lightgray;
+    cursor: pointer;
+}

@@ -1,0 +1,8 @@
+---
+applications:
+- name: todo-app-ui
+  memory: 256M
+  buildpack: staticfile_buildpack
+  path: dist
+  routes:
+  - route: todoInterface.cfapps.io
