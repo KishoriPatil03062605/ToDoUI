@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {ToDoServiceService} from "../services/to-do-service.service";
-import { Task } from "../models/Task";
+import {ToDoServiceService} from '../services/to-do-service.service';
+import { Task } from '../models/Task';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { Task } from "../models/Task";
 export class AppComponent {
   title = 'app';
   userName: string;
-  isSubmitted: boolean = false;
+  isSubmitted = false;
   tasks: Task[];
 
   constructor(private toDoService: ToDoServiceService){
@@ -19,12 +19,12 @@ export class AppComponent {
     });
   }
 
-  getToDoListByUserName(){
-    if(this.userName) {
-      this.toDoService.getToDosByUserName(this.userName).subscribe((toDos)=> {
+  getToDoListByUserName() {
+    if (this.userName) {
+      this.toDoService.getToDosByUserName(this.userName).subscribe((toDos) => {
         this.tasks = toDos.tasks;
       });
-      this.isSubmitted = true;  
+      this.isSubmitted = true;
     }
   }
 

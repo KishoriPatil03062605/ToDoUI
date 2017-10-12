@@ -1,5 +1,6 @@
 <div class="panel panel-info">
     <div class="panel-heading">{{heading}}</div>
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{error}}</div>
     <div class="panel-body">
         <form *ngIf="isSelectable === 'true'" (ngSubmit)="onSubmit()" #newTaskForm="ngForm" novalidate>
             <input type="text" placeholder="Enter Task" class="form-control" [(ngModel)]= "taskName" name="taskName"/>
