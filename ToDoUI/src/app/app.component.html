@@ -1,14 +1,16 @@
 <nav class="navbar navbar-inverse container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#" title="ToDo"><img alt="Brand" 
-        src="../assets/img/todo.png" height="250%"> </a>
-    </div>
+  <div class="navbar-header">
+    <a class="navbar-brand" href="#" title="ToDo">
+      <img alt="Brand" src="../assets/img/todo.png" height="250%"> </a>
+  </div>
+  <div class="pull-right" [hidden]="!isSubmitted">
+    <i class="glyphicon glyphicon-log-out logout-icon" title="Logout" (click)="logout()"></i>
+  </div>
 </nav>
 <div class="container">
   <form class="navbar-form navbar-left" (ngSubmit)="getToDoListByUserName()" *ngIf="!isSubmitted; else WelcomeUser">
-     <div class="input-group">
-      <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="userName" 
-      name="userName">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="User Name" [(ngModel)]="userName" name="userName">
       <div class="input-group-btn">
         <button [disabled]="!userName" (click)="getToDoListByUserName()" type="button" class="btn btn-secondary">
           Submit
@@ -18,17 +20,24 @@
   </form>
 </div>
 <ng-template #WelcomeUser>
-<h3>Welcome {{userName}}</h3>
+  <h3>Welcome {{userName}}</h3>
 </ng-template>
-<div class="container"  *ngIf="isSubmitted">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-      <td-list-panel filter="PENDING" heading="Pending Tasks" [tasks]="tasks" isSelectable=true></td-list-panel>
-
+<div class="container">
+  <div *ngIf="isSubmitted">
+    <br/>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <td-list-panel filter="PENDING" heading="Pending Tasks" [tasks]="tasks" isSelectable=true></td-list-panel>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <td-list-panel filter="COMPLETED" heading="Completed Tasks" [tasks]="tasks" isSelectable=false></td-list-panel>
+      </div>
     </div>
+  </div>
+  <div class="row" *ngIf="isLoading">
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-      <td-list-panel filter="COMPLETED" heading="Completed Tasks" [tasks]="tasks" isSelectable=false></td-list-panel>
-
+      <h3>Loading.....</h3>
     </div>
   </div>
 </div>
