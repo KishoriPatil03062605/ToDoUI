@@ -2,7 +2,7 @@
     <div class="panel-heading">{{heading}}</div>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{error}}</div>
     <div class="panel-body">
-        <form *ngIf="isSelectable === 'true'" (ngSubmit)="onSubmit()" #newTaskForm="ngForm" novalidate>
+        <form *ngIf="isPending()" (ngSubmit)="onSubmit()" #newTaskForm="ngForm" novalidate>
             <input type="text" placeholder="Enter Task" class="form-control" [(ngModel)]= "taskName" name="taskName"/>
             <hr/>
         </form>
@@ -12,8 +12,8 @@
             <li class="list-group-item" *ngFor="let task of tasks | StringPipe : filter">
                 <input type="checkbox" class="checkbox pull-left"
                 (ngModelChange)="onChange($event, task.value)"
-               *ngIf="isSelectable === 'true'" ngModel/>
-              &nbsp;{{task.value}}<i *ngIf="isSelectable === 'true'" 
+               *ngIf="isPending()" ngModel/>
+              &nbsp;{{task.value}}<i *ngIf="isPending()" 
               (click)="deleteTask(task)"
               class="glyphicon glyphicon-remove pull-right"></i></li> 
 

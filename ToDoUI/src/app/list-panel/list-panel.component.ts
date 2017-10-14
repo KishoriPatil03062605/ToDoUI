@@ -10,16 +10,16 @@ import { ToDoServiceService } from '../../services/to-do-service.service';
 export class ListPanelComponent implements OnInit {
 
   @Input('filter')
-  private filter: string;
+  filter: string;
 
   @Input('heading')
-  private heading: string;
+  heading: string;
 
   @Input('tasks')
-  private tasks: Task[];
+  tasks: Task[];
 
   @Input('isSelectable')
-  private isSelectable: boolean;
+  isSelectable;
 
   taskName: string;
 
@@ -66,5 +66,9 @@ export class ListPanelComponent implements OnInit {
 
   deleteTask(task) {
     this.todoService.deleteTask(task);
+  }
+
+  isPending() {
+    return this.isSelectable === 'true';
   }
 }
